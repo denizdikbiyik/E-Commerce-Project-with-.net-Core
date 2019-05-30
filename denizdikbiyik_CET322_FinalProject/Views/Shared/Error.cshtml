@@ -1,0 +1,38 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Hata";
+}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.js"></script>
+
+<section class="ab-info-main py-md-5">
+    <div class="container py-md-3">
+
+        <h1 class="text-danger">Hata.</h1>
+        <h2 class="text-danger">İsteğiniz gerçekleştirilirken bir hata oluştu.</h2>
+
+        @if (Model.ShowRequestId)
+        {
+            <p>
+                <strong>İstek No:</strong> <code>@Model.RequestId</code>
+            </p>
+        }
+
+            <h3>Geliştirme Modu</h3>
+        <p>
+            <strong>Geliştirme</strong>ortamına dönüştürmek oluşan hata ile ilgili daha fazla ayrıntı görüntüler.
+        </p>
+        <p>
+            <strong>Geliştirme ortamı konumlandırılmış uygulamalar için aktive edilmemelidir.</strong>
+            Bu hassas içeriği son kullanıcılara görüntülemeye sebep olabilir.
+            Yerel hata ayıklama için, <strong>Geliştirme</strong> ortamını aktive edin, <strong>ASPNETCORE_ENVIRONMENT</strong> ortamını kurarak <strong>Geliştirme</strong>
+            çeşitlendirir ve uygulamayı yeniden başlatır.
+        </p>
+    </div>
+</section>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+      
+    </script>
+}

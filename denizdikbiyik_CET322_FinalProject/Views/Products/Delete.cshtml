@@ -1,0 +1,70 @@
+﻿@{
+    ViewData["Title"] = "AdminIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<denizdikbiyik_CET322_FinalProject.Models.Product>
+
+@{
+    ViewData["Title"] = "Ürünler";
+}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.js"></script>
+
+<section class="ab-info-main py-md-5">
+    <div class="container py-md-3">
+        <h5 class="shop_w3 text-capitalize">
+            Tüm Ürünler
+        </h5>
+
+        <br />
+        <p>
+            <a asp-action="Create">Yeni Oluştur</a>
+        </p>
+
+        </br>
+
+        <div id="clothing-nav-content" class="tab-content py-sm-5">
+            <div role="tabpanel" class="tab-pane fade show active" id="women" aria-labelledby="women-tab">
+                <div id="owl-demo" class="owl-carousel text-center">
+                    <div class="col-lg-9 mt-lg-0 mt-5 right-product-grid">
+                        <div class="item">
+                            @foreach (var item in Model)
+                            {
+                                <!-- card -->
+                                <div class="card product-men p-3">
+                                    <div class="men-thumb-item">
+                                        <img src="~/uploads/@item.ProductImageUrl" alt="img" class="card-img-top">
+                                        <div class="men-cart-pro">
+                                            <div class="inner-men-cart-pro">
+                                                <a asp-action="Details" asp-route-id="@item.ProductId" class="link-product-add-cart">İncele</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- card body -->
+                                    <div class="card-body  py-3 px-2">
+                                        <h5 class="card-title text-capitalize">@Html.DisplayFor(modelItem => item.ProductName)</h5>
+                                        <div class="d-flex justify-content-between">
+                                            <p class="text-dark font-weight-bold">@Html.DisplayFor(modelItem => item.ProductPrice) TL</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- //card -->
+                                <tr>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.ProductId">Düzenle</a> |
+                                        <a asp-action="Details" asp-route-id="@item.ProductId">Detaylar</a> |
+                                        <a asp-action="Delete" asp-route-id="@item.ProductId">Sil</a>
+                                    </td>
+                                </tr>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

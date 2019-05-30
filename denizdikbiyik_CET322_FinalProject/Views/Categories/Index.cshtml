@@ -1,0 +1,58 @@
+﻿@model IEnumerable<denizdikbiyik_CET322_FinalProject.Models.Category>
+
+@{
+    ViewData["Title"] = "Kategori Listesi";
+}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.js"></script>
+
+<section class="ab-info-main py-md-5">
+    <div class="container py-md-3">
+        <h1>Kategori Listesi</h1>
+        <br />
+        <p>
+            <a asp-action="Create">Yeni Oluştur</a>
+        </p>
+        <br />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <label class="control-label">Kategori Adı</label>
+                    </th>
+                    <th>
+                        <label class="control-label">Oluşturulma Tarihi</label>
+                    </th>
+                    <th>
+                        <label class="control-label">Oluşturan Üye</label>
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CategoryName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CategoryCreatedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.KermesUser.UserName)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.CategoryId">Düzenle</a> |
+                            <a asp-action="Details" asp-route-id="@item.CategoryId">Detaylar</a> |
+                            <a asp-action="Delete" asp-route-id="@item.CategoryId">Sil</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

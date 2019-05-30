@@ -1,0 +1,66 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Profil";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+
+<h4>Profil</h4>
+<partial name="_StatusMessage" for="StatusMessage" />
+<div class="row">
+    <div class="col-md-6">
+        <form id="profile-form" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Username">Kullanıcı Adı</label>
+                <input asp-for="Username" class="form-control" disabled />
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Email">E-Posta</label>
+                @if (Model.IsEmailConfirmed)
+                {
+                    <div class="input-group">
+                        <input asp-for="Input.Email" class="form-control" />
+                        <span class="input-group-addon" aria-hidden="true"><span class="glyphicon glyphicon-ok text-success"></span></span>
+                    </div>
+                }
+                else
+                {
+                    <input asp-for="Input.Email" class="form-control" />
+                    <button id="email-verification" type="submit" asp-page-handler="SendVerificationEmail" class="btn btn-link">Doğrulama maili gönder</button>
+                }
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.UserFirstName">İsim</label>
+                <input asp-for="Input.UserFirstName" class="form-control" />
+                <span asp-validation-for="Input.UserFirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.UserLastName">Soyisim</label>
+                <input asp-for="Input.UserLastName" class="form-control" />
+                <span asp-validation-for="Input.UserLastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.UserTelNo">Telefon Numarası</label>
+                <input asp-for="Input.UserTelNo" class="form-control" />
+                <span asp-validation-for="Input.UserTelNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Dosya      </label>
+                <img src="~/uploads/@Model.Input.UserImageUrl" class="img-fluid" alt="eklenen dosya" />
+                <input type="file" id="FileUrl" name="FileUrl" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.UserContent">Hakkında</label>
+                <input asp-for="Input.UserContent" class="form-control" />
+                <span asp-validation-for="Input.UserContent" class="text-danger"></span>
+            </div>
+            <button id="update-profile-button" type="submit" class="btn btn-primary">Kaydet</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

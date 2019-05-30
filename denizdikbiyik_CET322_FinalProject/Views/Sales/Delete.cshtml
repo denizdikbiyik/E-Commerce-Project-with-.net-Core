@@ -1,0 +1,48 @@
+﻿@model denizdikbiyik_CET322_FinalProject.Models.Sales
+
+@{
+    ViewData["Title"] = "İptal";
+}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.js"></script>
+
+<section class="ab-info-main py-md-5">
+    <div class="container py-md-3">
+        <h1>İptal</h1>
+
+        <h3>Satışı iptal etmek istediğinize emin misiniz?</h3>
+        <div>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    Kargo Adresi
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.CargoAddress)
+                </dd>
+                <dt class="col-sm-2">
+                    İletişim Telefon Numarası
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ContactTelNo)
+                </dd>
+                <dt class="col-sm-2">
+                    Satın Alınan Tarih
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.SaledDate)
+                </dd>
+            </dl>
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="SalesId" />
+                <input type="submit" value="İptal Et" class="btn btn-danger" /> |
+                <a asp-action="Index">Geri Dön</a>
+            </form>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

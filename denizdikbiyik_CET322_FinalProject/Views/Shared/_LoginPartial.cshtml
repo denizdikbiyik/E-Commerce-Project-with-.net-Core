@@ -1,0 +1,59 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<KermesUser> SignInManager
+@inject UserManager<KermesUser> UserManager
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.js"></script>
+
+<div class="nav-icon d-flex">
+    <!-- sigin and sign up -->
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"> @User.Identity.Name!</a>
+        <a class="text-dark login_btn align-self-center mx-3" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <i class="fa fa-power-off"></i>
+        </a>
+        <!-- sigin and sign up -->
+        <!-- shopping cart -->
+                <a class="cart-mainf" asp-controller="ShoppingCarts" asp-action="Index">
+                    <i class="fa fa-shopping-cart m-2"></i>
+                </a>
+            }
+            else
+            {
+            <a class="text-dark login_btn align-self-center mx-3" asp-area="Identity" asp-page="/Account/Login">
+                <i class="far fa-user"></i>
+            </a>
+            }
+            <!-- //shopping cart ends here -->
+        </div>
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            <script>
+
+            </script>
+        }
+        <!-- script for show signin and signup modal -->
+        <script>
+            $(document).ready(function () {
+                $("#myModal_btn").modal();
+            });
+        </script>
+        <!-- //script for show signin and signup modal -->
+        <!-- script for password match -->
+        <!-- cart-js -->
+        <script src="~/js/minicart.js">
+        </script>
+        <script>
+            hub.render();
+            hub.cart.on('new_checkout', function (evt) {
+                var items, len, i;
+
+                if (this.subtotal() > 0) {
+                    items = this.items();
+
+                    for (i = 0, len = items.length; i < len; i++) { }
+                }
+            });
+        </script>
+        <!-- //cart-js -->
+        <!-- start-smooth-scrolling -->

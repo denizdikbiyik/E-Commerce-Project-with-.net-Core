@@ -1,0 +1,36 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/denizdikbiyik_CET322_FinalProject/denizdikbiyik_CET322_FinalProject.csproj"
+            ],
+            "problemMatcher": "$tsc"
+        },
+        {
+            "label": "publish",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/denizdikbiyik_CET322_FinalProject/denizdikbiyik_CET322_FinalProject.csproj"
+            ],
+            "problemMatcher": "$tsc"
+        },
+        {
+            "label": "watch",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "${workspaceFolder}/denizdikbiyik_CET322_FinalProject/denizdikbiyik_CET322_FinalProject.csproj"
+            ],
+            "problemMatcher": "$tsc"
+        }
+    ]
+}

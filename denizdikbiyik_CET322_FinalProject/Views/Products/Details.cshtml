@@ -1,0 +1,93 @@
+﻿@model denizdikbiyik_CET322_FinalProject.Models.Product
+
+@{
+    ViewData["Title"] = "Detaylar";
+}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.js"></script>
+
+<section class="ab-info-main py-md-5">
+
+    <!-- Single -->
+    <div class="innerf-pages section py-5">
+        <div class="container">
+            <div class="row my-sm-5">
+                <div class="col-lg-4 single-right-left">
+                    <div class="grid images_3_of_2">
+                        <div class="flexslider1">
+                            <ul class="slides">
+                                <li data-thumb="images/mff1.jpg">
+                                    <div class="thumb-image">
+                                        <img src="~/uploads/@Model.ProductImageUrl" data-imagezoom="true" alt=" " class="img-fluid">
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 mt-lg-0 mt-5 single-right-left simpleCart_shelfItem">
+                    <h3>
+                        @Html.DisplayFor(model => model.ProductName)
+                    </h3>                   
+                    <div class="desc_single">
+                        <h5>Detaylar</h5>
+                        <p>
+                            @Html.Raw(Model.ProductContent)
+                        </p>
+                    </div>
+                    <div class="d-sm-flex justify-content-between">
+                        <div class="occasional">
+                            <h5 class="sp_title mb-3">Ürün Hakkında</h5>
+                            <ul class="single_specific">
+                                <li>
+                                    Kategori:
+                                    <span>@Html.DisplayFor(model => model.Category.CategoryName)</span>
+                                <li>
+                            </ul>
+
+                        </div>
+                        <div class="color-quality mt-sm-0 mt-4">
+                            <h5 class="sp_title mb-3">Ürünü Ekleyen Kullanıcı</h5>
+                            <ul class="single_serv">
+                                <li>
+                                    <a>
+                                        @if (Model.KermesUser == null)
+                                        {<text>Bilinmiyor</text> }
+                                    else
+                                    {@Model.KermesUser.UserFirstName @Model.KermesUser.UserLastName}
+                                        <br/>@Model.ProductCreatedDate.ToLongDateString() tarihinde
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="occasion-cart">
+                        <div class="chr single-item single_page_b">
+                            <div class="card-footer d-flex justify-content-end">
+                                <div class="caption">
+                                    <div class="clearfix"> </div>
+                                    <h4>
+                                        @Html.DisplayFor(model => model.ProductPrice) TL
+                                    </h4>
+                                </div>
+                                <a href="~/ShoppingCarts/AddToBasket?productId=@Model.ProductId">
+                                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+
+    </script>
+}

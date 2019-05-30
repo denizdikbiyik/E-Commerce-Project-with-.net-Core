@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.js"></script>
+
+            <div class="banner-text">
+                <div class="callbacks_container">
+                    <ul class="rslides" id="slider3">
+                        <li class="banner banner3">
+                            <div class="container">
+                                <h3 class="agile_btxt">
+                                    <span>K</span>ermes
+                                    <span>S</span>anatın
+                                    <span>A</span>dresi
+                                </h3>
+                                <h4 class="w3_bbot">aradığınız sanat ürünü burada</h4>
+                                <div class="slider-info mt-sm-5">
+                                    <h4 class="bn_right">
+                                        <span>E</span>l
+                                        <span>Y</span>apımı
+                                        <span>Ü</span>rünler
+                                    </h4>
+                                    @*<div class="bnr_clip position-relative">
+                                        <h4>
+                                            indirim
+                                            <span class="px-2">45%</span>
+                                        </h4>                                      
+                                        <p class="text-uppercase py-2">%45'e varan</p>
+                                        <a class="btn btn-primary mt-3 text-capitalize" asp-controller="Products" asp-action="Index" role="button">şimdi al</a>
+                                    </div>*@
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row no-gutters pb-5">
+                <div class="col-sm-4">
+                    <div class="hovereffect">
+                        <img class="img-fluid" src="~/images/a1.jpg" alt="">
+                        <div class="overlay">
+                            <h5>ev süsleri</h5>
+                            <a class="info" asp-controller="Products" asp-action="Index">Alışverişe Başla</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="hovereffect">
+                        <img class="img-fluid" src="~/images/a2.jpg" alt="">
+                        <div class="overlay">
+                            <h5>oyuncaklar</h5>
+                            <a class="info" asp-controller="Products" asp-action="Index">Alışverişe Başla</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="hovereffect">
+                        <img class="img-fluid" src="~/images/a3.jpg" alt="">
+                        <div class="overlay">
+                            <h5>özel gün ürünleri</h5>
+                            <a class="info" asp-controller="Products" asp-action="Index">Alışverişe Başla</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+      
+    </script>
+}

@@ -1,0 +1,51 @@
+﻿@page
+@model LoginWith2faModel
+@{
+    ViewData["Title"] = "İki-Faktörlü Kimlik";
+}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.js"></script>
+
+<section class="ab-info-main py-md-5">
+    <div class="container py-md-3">
+        <h1>İki-Faktörlü Kimlik</h1>
+        <hr />
+        <p>Hesabınız doğrulama uygulaması ile korunuyor. Lütfen aşağıya doğrulama kodunuzu giriniz.</p>
+        <div class="row">
+            <div class="col-md-4">
+                <form method="post" asp-route-returnUrl="@Model.ReturnUrl">
+                    <input asp-for="RememberMe" type="hidden" />
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Input.TwoFactorCode">Kod</label>
+                        <input asp-for="Input.TwoFactorCode" class="form-control" autocomplete="off" />
+                        <span asp-validation-for="Input.TwoFactorCode" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label asp-for="Input.RememberMachine">
+                                <input asp-for="Input.RememberMachine" />
+                                @Html.DisplayNameFor(m => m.Input.RememberMachine)
+                                Hatırlama
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Giriş Yap</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <p>
+            Kimlik cihazınıza erişiminşz yok mu? Şunu deneyin:
+            <a id="recovery-code-login" asp-page="./LoginWithRecoveryCode" asp-route-returnUrl="@Model.ReturnUrl">kurtarma kodu ile giriş yap</a>.
+        </p>
+    </div>
+</section>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+      
+    </script>
+}

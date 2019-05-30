@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "İletişim";
+}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.js"></script>
+<section class="wthree-row pt-3 pb-sm-5 w3-contact">
+    <div class="container py-sm-5 pb-5">
+        <h5 class="head_agileinfo text-center text-capitalize pb-5">
+            <span>İ</span>letişime geçin
+        </h5>
+        <div class="row contact-form pt-lg-5">
+            <div class="col-lg-6 pl-5 wthree-form-left">
+                <div class="address">
+                    <h5 class="pb-3 text-capitalize">Adres</h5>
+                    <address>
+                        <p class="c-txt">Boğaziçi Üniversitesi, Bebek / İstanbul.</p>
+                    </address>
+                </div>
+                <div class="address my-5">
+                    <h5 class="pb-3 text-capitalize">telefon</h5>
+                    <p>
+                        +90 506 510 63 89
+                    </p>
+                    <p>
+                        +90 212 000 00 00
+                    </p>
+                </div>
+                <div class="address mt-md-0 mt-3">
+                    <h5 class="pb-3 text-capitalize">E-Posta</h5>
+                    <p>
+                        <a href="mailto:info@example.com">info@kermes.com</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6 contact-bottom pl-3 mt-lg-0 mt-5">
+                <div class="map contact-right pb-5">
+                    <div class="pt-lg-0 bg-pricemain text-center">
+                        <h3 class="stat-title text-capitalize pb-2">Harita</h3>
+                        <span class="w3-line"></span>
+                    </div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3007.2785062710723!2d29.04885121587771!3d41.08476112266284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac9ff47fbad73%3A0xbd6495985c46cd0e!2zQm_En2F6acOnaSBVbml2ZXJzaXR5!5e0!3m2!1sen!2str!4v1559135772080!5m2!1sen!2str" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+    </script>
+}

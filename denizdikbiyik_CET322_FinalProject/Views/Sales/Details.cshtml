@@ -1,0 +1,46 @@
+﻿@model denizdikbiyik_CET322_FinalProject.Models.Sales
+
+@{
+    ViewData["Title"] = "Details";
+}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.js"></script>
+
+<section class="ab-info-main py-md-5">
+    @*<div class="container py-md-3">
+        <h1>Details</h1>
+
+        <div>
+            <h4>Sales</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.CargoAddress)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.CargoAddress)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ContactTelNo)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ContactTelNo)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.SaledDate)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.SaledDate)
+                </dd>
+            </dl>
+        </div>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.SalesId">Edit</a> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>*@
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

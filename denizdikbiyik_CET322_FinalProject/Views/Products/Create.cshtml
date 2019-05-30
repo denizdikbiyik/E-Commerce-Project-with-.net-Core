@@ -1,0 +1,58 @@
+﻿@model denizdikbiyik_CET322_FinalProject.Models.Product
+
+@{
+    ViewData["Title"] = "Oluştur";
+}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.js"></script>
+
+<section class="ab-info-main py-md-5">
+    <div class="container py-md-3">
+        <h1>Yeni Ürün Ekle</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Create" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="ProductName" class="control-label">Ürün Adı</label>
+                        <input asp-for="ProductName" class="form-control" />
+                        <span asp-validation-for="ProductName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Ürün Fotoğrafı</label>
+                        <input type="file" id="FileUrl" name="FileUrl" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ProductContent" class="control-label">Ürün Hakkında</label>
+                        <input asp-for="ProductContent" class="form-control" />
+                        <span asp-validation-for="ProductContent" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ProductPrice" class="control-label">Ürün Fiyatı</label>
+                        <input asp-for="ProductPrice" class="form-control" />
+                        <span asp-validation-for="ProductPrice" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Ürün Kategorisi</label>
+                        @Html.DropDownListFor(m => m.CategoryId,
+                                              Model.categories,
+                                              "- Lütfen kategori seçiniz. -",
+                                              new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Oluştur" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div>
+            <a asp-action="Index">Listeye Dön</a>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        var editor = new Jodit('#ProductContent');
+    </script>
+}

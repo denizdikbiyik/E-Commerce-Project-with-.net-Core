@@ -1,0 +1,104 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Kayıt Ol";
+}
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jodit/3.1.92/jodit.min.js"></script>
+
+<section class="ab-info-main py-md-5">
+    <div class="container py-md-3">
+
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data">
+                    <hr />
+                    <div class="modal-header">
+                        <h5 class="modal-title">Hemen Kayıt Ol</h5>
+                    </div>
+                    <div class="col-md-6 mx-auto align-self-center">
+                        <img src="~/images/p3.png" class="img-fluid" alt="login_image" />
+                    </div>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Input.UserFirstName">İsim</label>
+                        <input asp-for="Input.UserFirstName" class="form-control" />
+                        <span asp-validation-for="Input.UserFirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.UserLastName">Soyisim</label>
+                        <input asp-for="Input.UserLastName" class="form-control" />
+                        <span asp-validation-for="Input.UserLastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.Email">E-Posta</label>
+                        <input asp-for="Input.Email" class="form-control" />
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.UserTelNo">Telefon Numarası</label>
+                        <input asp-for="Input.UserTelNo" class="form-control" />
+                        <span asp-validation-for="Input.UserTelNo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Fotoğraf</label>
+                        <input type="file" id="FileUrl" name="FileUrl" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.UserContent">Hakkında</label>
+                        <input asp-for="Input.UserContent" class="form-control" />
+                        <span asp-validation-for="Input.UserContent" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.Password">Şifre</label>
+                        <input asp-for="Input.Password" class="form-control" />
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.ConfirmPassword">Şifreyi doğrula</label>
+                        <input asp-for="Input.ConfirmPassword" class="form-control" />
+                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- //signup modal -->
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+      var editor = new Jodit('#Input.UserContent');
+    </script>
+}
+<!-- script for show signin and signup modal -->
+<script>
+    $(document).ready(function () {
+        $("#myModal_btn").modal();
+    });
+</script>
+<!-- //script for show signin and signup modal -->
+<!-- script for password match -->
+<!-- cart-js -->
+<script src="~/js/minicart.js">
+</script>
+<script>
+    hub.render();
+
+    hub.cart.on('new_checkout', function (evt) {
+        var items, len, i;
+
+        if (this.subtotal() > 0) {
+            items = this.items();
+
+            for (i = 0, len = items.length; i < len; i++) { }
+        }
+    });
+</script>
+<!-- //cart-js -->
+<!-- start-smooth-scrolling -->
